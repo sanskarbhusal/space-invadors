@@ -1,4 +1,7 @@
 import Enemy from "../utils/Enemy.js"
+import MovingDirection from "../utils/MovingDirection.js"
+
+
 export default class EnemyController {
 
     enemyMap = [
@@ -12,17 +15,34 @@ export default class EnemyController {
 
     enemyRows = []
 
+    currentDirection = MovingDirection.right
+    xVelocity = 0
+    yVelocity = 0
+    defaultXVelocity = 1
+    defaultYVelocity = 1
+
     constructor(canvas) {
         this.canvas = canvas
         this.createEnemies()
     }
 
     draw(ctx) {
+        this.updateVelocityAndDirection()
         this.drawEnemies(ctx)
+    }
+
+    updateVelocityAndDirection() {
+        for (const enemyRow of this.enemyRows) {
+            if (this.currentDirection == MovingDirection.right) {
+                this.xVelocity = this.defaultXVelocity
+                this.yVelocity = 0
+            }
+        }
     }
 
     drawEnemies(ctx) {
         this.enemyRows.flat().forEach((enemy) => {
+            enemy.move(this.xVelocity, this.yVelocity)
             enemy.draw(ctx)
         })
     }
