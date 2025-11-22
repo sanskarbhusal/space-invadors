@@ -13,7 +13,8 @@ export default class EnemyController {
     enemyRows = []
 
     constructor(canvas) {
-        this.convas = canvas
+        this.canvas = canvas
+        this.createEnemies()
     }
 
     draw(ctx) {
