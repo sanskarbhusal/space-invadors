@@ -7,12 +7,20 @@ export default class BulletController {
 
     constructor(canvas, maxBulletsAtATime, bulletColor, soundEnabled) {
         this.canvas = canvas
-        this.maxBulletsAtATime = maxBulletsAtATime;
+        this.maxBulletsAtATime = maxBulletsAtATime
         this.bulletColor = bulletColor
         this.soundEnabled = soundEnabled
 
         this.shootSound = new Audio("../sounds/shoot.wav")
-        this.shootSound.volume = 0.1
+        this.shootSound.volume = 0.5
+    }
+
+    draw(ctx) {
+        this.bullets.forEach(bullet => bullet.draw(ctx))
+
+        if (this.timeTillNextBulletAllowed > 0) {
+            this.timeTillNextBulletAllowed--
+        }
     }
 
     shoot(x, y, velocity, timeTillNextBulletAllowed = 0) {

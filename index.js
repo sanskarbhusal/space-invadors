@@ -17,8 +17,10 @@ const playerController = new PlayerController(canvas, 3, playerBulletController)
 
 function game() {
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
-    // enemyController.draw(ctx)
+    enemyController.draw(ctx)
     playerController.draw(ctx)
+    playerBulletController.draw(ctx)
+
 }
 
 setInterval(game, 1000 / 60);
