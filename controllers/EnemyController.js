@@ -25,9 +25,10 @@ export default class EnemyController {
     fireBulletTimerDefault = 100
     fireBulletTimer = this.fireBulletTimerDefault
 
-    constructor(canvas, enemyBulletController) {
+    constructor(canvas, enemyBulletController, playerBulletController) {
         this.canvas = canvas
         this.enemyBulletController = enemyBulletController
+        this.playerBulletController = playerBulletController
 
         this.createEnemies()
     }
@@ -35,9 +36,22 @@ export default class EnemyController {
     draw(ctx) {
         this.decrementMoveDownTimer()
         this.updateVelocityAndDirection()
+        this.collisionDetection()
         this.drawEnemies(ctx)
         this.resetMoveDownTimer()
         this.fireBullet()
+    }
+
+    collisionDetection() {
+        this.enemyRows.forEach((enemyRow) => {
+            enemyRow.forEach((enemy, enemyIndex) => {
+                if (this.playerBulletController.collideWith(enemy)) {
+                    //play sound
+                    enemyRow.splice(enemyIndex, 1)
+                }
+            })
+        })
+        this.enemyRows = this.enemyRows.filter((enemyRow) => enemyRow.length > 0)
     }
 
     fireBullet() {
@@ -48,7 +62,6 @@ export default class EnemyController {
             const enemyIndex = Math.floor(Math.random() * allEnemies.length)
             const enemy = allEnemies[enemyIndex]
             this.enemyBulletController.shoot(enemy.x + enemy.width / 2, enemy.y, - 3)
-            console.log(enemyIndex)
         }
     }
 
