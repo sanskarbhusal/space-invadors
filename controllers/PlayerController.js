@@ -1,5 +1,8 @@
 export default class PlayerController {
 
+
+    score = 0
+
     rightPressed = false
     leftPressed = false
     shootPressed = false
@@ -20,6 +23,17 @@ export default class PlayerController {
         document.addEventListener("keyup", this.keyup)
 
     }
+
+
+    // here here here here 
+    getScore() {
+        return this.score
+    }
+    updateScore(points) {
+        this.score += points
+    }
+
+
 
     draw(ctx) {
         if (this.shootPressed) {

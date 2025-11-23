@@ -4,9 +4,9 @@ export default class Enemy {
         this.y = y
         this.width = 44
         this.height = 32
-
+        this.enemyNumber = enemyNumber
         this.image = new Image()
-        this.image.src = `../images/enemy${enemyNumber}.png`
+        this.image.src = `../images/enemy${this.enemyNumber}.png`
     }
 
     draw(ctx) {
