@@ -12,7 +12,8 @@ const background = new Image()
 background.src = "images/space.png"
 
 const playerBulletController = new BulletController(canvas, 10, "red", true)
-const enemyController = new EnemyController(canvas)
+const enemyBulletController = new BulletController(canvas, 4, "white", false)
+const enemyController = new EnemyController(canvas, enemyBulletController, playerBulletController)
 const playerController = new PlayerController(canvas, 3, playerBulletController)
 
 function game() {
@@ -20,7 +21,7 @@ function game() {
     enemyController.draw(ctx)
     playerController.draw(ctx)
     playerBulletController.draw(ctx)
-
+    enemyBulletController.draw(ctx)
 }
 
 setInterval(game, 1000 / 60);

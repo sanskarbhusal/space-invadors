@@ -14,6 +14,5 @@ export default class Bullet {
         this.y -= this.velocity
         ctx.fillStyle = this.bulletColor
         ctx.fillRect(this.x, this.y, this.widht, this.height)
-
     }
 }
