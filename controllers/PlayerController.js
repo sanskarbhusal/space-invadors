@@ -2,10 +2,12 @@ export default class PlayerController {
 
     rightPressed = false
     leftPressed = false
+    shootPressed = false
 
-    constructor(canvas, velocity) {
+    constructor(canvas, velocity, bulletController) {
         this.canvas = canvas
         this.velocity = velocity
+        this.bulletController = bulletController
 
         this.x = this.canvas.width / 2
         this.y = this.canvas.height - 75
@@ -20,6 +22,9 @@ export default class PlayerController {
     }
 
     draw(ctx) {
+        if (this.shootPressed) {
+            this.bulletController.shoot(this.x + this.width / 2, this.y, 4, 10)
+        }
         this.move()
         this.collideWithWalls()
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height)
@@ -52,6 +57,9 @@ export default class PlayerController {
         if (event.code == "ArrowLeft") {
             this.leftPressed = true
         }
+        if (event.code == "Space") {
+            this.shootPressed = true
+        }
     }
 
     keyup = (event) => {
@@ -60,6 +68,9 @@ export default class PlayerController {
         }
         if (event.code == "ArrowLeft") {
             this.leftPressed = false
+        }
+        if (event.code == "Space") {
+            this.shootPressed = false
         }
     }
 }
