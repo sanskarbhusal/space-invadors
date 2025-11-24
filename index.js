@@ -61,7 +61,10 @@ function checkGameOver() {
     }
 
     if (enemyBulletController.collideWith(playerController)) {
-        isGameOver = true
+        // contributed by: Sanskar Bhusal
+        playerController.reduceRemainingLife()
+        isGameOver = playerController.getRemainingLife() > 0 ? false : true
+
     }
 
     if (enemyController.collideWith(playerController)) {
