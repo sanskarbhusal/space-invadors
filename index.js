@@ -47,16 +47,11 @@ function displayGameOver() {
         ctx.fillText(text, canvas.width / textOffset, canvas.height / 2)
 
         // contributed by Sanskar 
-        if (didWin) {
-
-            let scoreText = `Score: ${playerController.getScore()}`
-            ctx.fillStyle = "green"
-            ctx.font = "50px Arial"
-            ctx.fillText(scoreText, canvas.width / 3.2, canvas.height / 1.5)
-        }
+        let scoreText = `Score: ${playerController.getScore()}`
+        ctx.fillStyle = "green"
+        ctx.font = "50px Arial"
+        ctx.fillText(scoreText, canvas.width / 3.2, canvas.height / 1.5)
         // upto here
-
-
     }
 }
 
