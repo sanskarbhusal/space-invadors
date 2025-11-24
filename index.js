@@ -64,6 +64,7 @@ function displayGameOver() {
 function displayPlayAgain() {
     if (isGameOver) {
         playAgainButton.style.display = "block"
+
         enablePlayAgainButton()
         playAgainButton.onclick = () => {
             isGameOver = false
