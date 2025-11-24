@@ -1,8 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-#my-canvas {
-    box-shadow: 5px 5px 20px black;
-    border-radius: 20px;
-    padding-block-start: 1rem;
-    background: url("../images/space.png");
-}

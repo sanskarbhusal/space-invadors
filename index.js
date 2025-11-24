@@ -4,7 +4,12 @@ import BulletController from "./controllers/BulletController.js"
 
 const canvas = document.getElementById("my-canvas")
 const ctx = canvas.getContext("2d")
+
 //contributed by: Sanskar Bhusal
+const playButton = document.getElementById("play")
+playButton.onclick = () => {
+    isFirstLoad = false
+}
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
 // upto here
@@ -27,16 +32,20 @@ let enemyController = new EnemyController(
 
 let isGameOver = false
 let didWin = false
+var isFirstLoad = true
 
 function game() {
-    checkGameOver()
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
-    displayGameOver()
-    if (!isGameOver) {
-        enemyController.draw(ctx)
-        playerController.draw(ctx)
-        playerBulletController.draw(ctx)
-        enemyBulletController.draw(ctx)
+    if (!isFirstLoad) {
+        disablePlayButton()
+        checkGameOver()
+        ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
+        displayGameOver()
+        if (!isGameOver) {
+            enemyController.draw(ctx)
+            playerController.draw(ctx)
+            playerBulletController.draw(ctx)
+            enemyBulletController.draw(ctx)
+        }
     }
 }
 
@@ -61,6 +70,12 @@ function displayGameOver() {
 }
 
 // contributed by: Sanskar
+function disablePlayButton() {
+    playButton.pointerEvents = "none"
+    playButton.style.color = "transparent"
+    playButton.style.backgroundColor = "transparent"
+}
+
 function displayPlayAgain() {
     if (isGameOver) {
         playAgainButton.style.display = "block"
@@ -121,5 +136,4 @@ function checkGameOver() {
     }
 }
 
-
-setInterval(game, 1000 / 60);
+setInterval(game, 1000 / 60)
