@@ -33,6 +33,7 @@ let enemyController = new EnemyController(
 let isGameOver = false
 let didWin = false
 var isFirstLoad = true
+let didGameOverSoundPlay = false
 
 function game() {
     if (!isFirstLoad) {
@@ -51,6 +52,12 @@ function game() {
 
 function displayGameOver() {
     if (isGameOver) {
+
+        if (!didGameOverSoundPlay) {
+            new Audio("sounds/game-over-sound.wav").play()
+            didGameOverSoundPlay = true
+        }
+
         let text = didWin ? "You Won" : "Game Over"
         let textOffset = didWin ? 5 : 8.5
 
