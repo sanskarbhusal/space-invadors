@@ -1,0 +1,30 @@
+source_branch="feat/player_controller"
+target_branch="feat/prototype"
+
+echo
+echo "Source branch:"
+read source_branch
+
+echo
+read -n 1 -r -s -p "This script assumes you've commited your changes on $source_branch
+Press any key to continue..."
+
+echo
+echo "Switching to $target_branch"
+git checkout "$target_branch"
+
+echo
+echo "Merging $source_branch into $target_branch"
+git merge "$source_branch"
+
+echo
+echo "Switching back to working $source_branch"
+git checkout $source_branch
+git branch
+
+echo
+echo "Script is done. You can now take over from here. :)"
+
+echo
+echo "Note: make sure to check if merge conflicts were encoutered"
+
