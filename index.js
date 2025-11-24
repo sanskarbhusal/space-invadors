@@ -5,8 +5,8 @@ import BulletController from "./controllers/BulletController.js"
 const canvas = document.getElementById("my-canvas")
 const ctx = canvas.getContext("2d")
 
-canvas.width = 600
-canvas.height = 600
+canvas.width = 800
+canvas.height = 800
 
 const background = new Image()
 background.src = "images/space.png"
@@ -40,7 +40,7 @@ function game() {
 function displayGameOver() {
     if (isGameOver) {
         let text = didWin ? "You Won" : "Game Over"
-        let textOffset = didWin ? 3.5 : 5
+        let textOffset = didWin ? 3.5 : 3.5
 
         ctx.fillStyle = "white"
         ctx.font = "70px Arial"
