@@ -53,9 +53,11 @@ function game() {
 function displayGameOver() {
     if (isGameOver) {
 
-        if (!didGameOverSoundPlay) {
-            new Audio("sounds/game-over-sound.wav").play()
-            didGameOverSoundPlay = true
+        if (!didWin) {
+            if (!didGameOverSoundPlay) {
+                new Audio("sounds/game-over-sound.wav").play()
+                didGameOverSoundPlay = true
+            }
         }
 
         let text = didWin ? "You Won" : "Game Over"

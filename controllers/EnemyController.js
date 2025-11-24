@@ -18,8 +18,8 @@ export default class EnemyController {
     currentDirection = MovingDirection.right
     xVelocity = 0
     yVelocity = 0
-    defaultXVelocity = 1
-    defaultYVelocity = 1
+    defaultXVelocity = 3
+    defaultYVelocity = 3
     moveDownTimerDefault = 30
     moveDownTimer = this.moveDownTimerDefault
     fireBulletTimerDefault = 100
