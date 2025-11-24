@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -6,7 +9,7 @@ h1 {
     margin: 0px;
     margin-bottom: 10px;
     font-size: 2.9rem;
-    font-family: "Helvetica";
+    font-family: "VT323", monospace;
 }
 
 
@@ -17,5 +20,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(0deg, rgb(97, 98, 99)0%, rgba(0, 0, 0, 0)100%)
+    justify-content: space-around;
+    background: linear-gradient(0deg, rgb(97, 98, 99)0%, rgba(0, 0, 0, 0)100%);
+
+
+    font-family: 'Press Start 2P', cursive;
 }

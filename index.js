@@ -4,17 +4,21 @@ import BulletController from "./controllers/BulletController.js"
 
 const canvas = document.getElementById("my-canvas")
 const ctx = canvas.getContext("2d")
+//contributed by: Sanskar Bhusal
+const playAgainButton = document.getElementById("play-again")
+disablePlayAgainButton(playAgainButton)
+// upto here
 
 canvas.width = 800
-canvas.height = 800
+canvas.height = 700
 
 const background = new Image()
 background.src = "images/space.png"
 
-const playerBulletController = new BulletController(canvas, 10, "red", true)
-const enemyBulletController = new BulletController(canvas, 4, "white", false)
-const playerController = new PlayerController(canvas, 3, playerBulletController)
-const enemyController = new EnemyController(
+let playerBulletController = new BulletController(canvas, 10, "red", true)
+let enemyBulletController = new BulletController(canvas, 4, "white", false)
+let playerController = new PlayerController(canvas, 3, playerBulletController)
+let enemyController = new EnemyController(
     canvas,
     enemyBulletController,
     playerBulletController,
@@ -33,27 +37,66 @@ function game() {
         playerController.draw(ctx)
         playerBulletController.draw(ctx)
         enemyBulletController.draw(ctx)
-        console.log(isGameOver)
     }
 }
 
 function displayGameOver() {
     if (isGameOver) {
         let text = didWin ? "You Won" : "Game Over"
-        let textOffset = didWin ? 3.5 : 3.5
+        let textOffset = didWin ? 5 : 8.5
 
         ctx.fillStyle = "white"
-        ctx.font = "70px Arial"
-        ctx.fillText(text, canvas.width / textOffset, canvas.height / 2)
+        ctx.font = "70px 'Press Start 2P'"
+        ctx.fillText(text, canvas.width / textOffset, canvas.height / 2.1)
 
         // contributed by Sanskar 
         let scoreText = `Score: ${playerController.getScore()}`
         ctx.fillStyle = "green"
-        ctx.font = "50px Arial"
-        ctx.fillText(scoreText, canvas.width / 3.2, canvas.height / 1.5)
+        ctx.font = "50px 'Press Start 2P'"
+        ctx.fillText(scoreText, canvas.width / 4.5, canvas.height / 1.5)
+
+        displayPlayAgain()
         // upto here
     }
 }
+
+// contributed by: Sanskar
+function displayPlayAgain() {
+    if (isGameOver) {
+        playAgainButton.style.display = "block"
+        enablePlayAgainButton()
+        playAgainButton.onclick = () => {
+            isGameOver = false
+            didWin = false
+
+            // reset the controllers by creating new instances
+            playerBulletController = new BulletController(canvas, 10, "red", true)
+            enemyBulletController = new BulletController(canvas, 4, "white", false)
+            playerController = new PlayerController(canvas, 3, playerBulletController)
+            enemyController = new EnemyController(
+                canvas,
+                enemyBulletController,
+                playerBulletController,
+                playerController
+            )
+            disablePlayAgainButton()
+        }
+    }
+}
+
+function enablePlayAgainButton() {
+    playAgainButton.style.color = "white"
+    playAgainButton.style.backgroundColor = "green"
+    playAgainButton.style.pointerEvents = "auto"
+}
+
+function disablePlayAgainButton() {
+    playAgainButton.style.color = "transparent" // hides button text
+    playAgainButton.style.backgroundColor = "transparent" // hides button itself
+    playAgainButton.style.pointerEvents = "none" // disables hover and click
+}
+
+// upto here
 
 function checkGameOver() {
     if (isGameOver) {
@@ -64,7 +107,7 @@ function checkGameOver() {
         // contributed by: Sanskar Bhusal
         playerController.reduceRemainingLife()
         isGameOver = playerController.getRemainingLife() > 0 ? false : true
-
+        // upto here
     }
 
     if (enemyController.collideWith(playerController)) {
