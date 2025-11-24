@@ -1,7 +1,9 @@
 export default class PlayerController {
 
-
+    // contributed by: Sanskar Bhusal
     score = 0
+    remainingLife = 3
+    // upto here
 
     rightPressed = false
     leftPressed = false
@@ -25,7 +27,7 @@ export default class PlayerController {
     }
 
 
-    // here here here here 
+    // contributed by: Sanskar Bhusal
     getScore() {
         return this.score
     }
@@ -33,6 +35,14 @@ export default class PlayerController {
         this.score += points
     }
 
+    getRemainingLife() {
+        return this.remainingLife
+    }
+
+    reduceRemainingLife() {
+        --this.remainingLife
+    }
+    // upto here
 
 
     draw(ctx) {
