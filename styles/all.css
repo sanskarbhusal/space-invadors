@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -6,7 +9,7 @@ h1 {
     margin: 0px;
     margin-bottom: 10px;
     font-size: 2.9rem;
-    font-family: "Helvetica";
+    font-family: "VT323", monospace;
 }
 
 
@@ -17,5 +20,68 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(0deg, rgb(97, 98, 99)0%, rgba(0, 0, 0, 0)100%)
+    justify-content: space-around;
+    background: linear-gradient(0deg, rgb(97, 98, 99)0%, rgba(0, 0, 0, 0)100%);
+    font-family: 'Press Start 2P', cursive;
+}
+
+#canvas-container {
+    position: relative;
+}
+
+
+#my-canvas {
+    position: relative;
+    z-index: 1;
+    box-shadow: 5px 5px 20px black;
+    border-radius: 20px;
+    padding-block-start: 1rem;
+    background: url("../images/space.png");
+}
+
+#play-again {
+    padding: 0;
+    margin: 0;
+    background-color: green;
+    color: white;
+    font-family: "Press Start 2P", cursive;
+    margin-block-start: rem;
+    border-radius: 20px;
+    user-select: none;
+    padding: 1rem;
+}
+
+#play-again:hover {
+    box-shadow: 0 0 10px black;
+}
+
+#play-again:active {
+    background-color: lightgray;
+    transform: scale(0.9);
+}
+
+#play {
+    position: relative;
+    width: fit-content;
+    z-index: 2;
+    top: 380px;
+    left: 300px;
+    color: white;
+    font-size: 3rem;
+    font-weight: bolder;
+    user-select: none;
+    padding-inline-start: 0.7rem;
+    padding-inline-end: 0.3rem;
+    padding-block-start: 0.8rem;
+    padding-block-end: 0.4rem;
+    border-radius: 20px;
+    background-color: blue;
+}
+
+#play:hover {
+    transform: scale(1.1)
+}
+
+#play:active {
+    transform: scale(1);
 }
