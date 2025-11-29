@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <div style="display:flex;gap:1rem;">
+    <div style="display:flex;flex-direction: column;gap:1rem; align-items: center">
         <h1>Space Invaders</h1>
         <input id="sound-button-state" type="checkbox" hidden />
-        <label id="sound-button" for="sound-button-state"></label>
+        <label id="sound-button" for="sound-button-state" style="position: relative;bottom: 1px;"></label>
     </div>
     <div id="canvas-container">
         <div id="play">
