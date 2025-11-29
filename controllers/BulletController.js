@@ -5,11 +5,12 @@ export default class BulletController {
     bullets = []
     timeTillNextBulletAllowed = 0
 
-    constructor(canvas, maxBulletsAtATime, bulletColor, soundEnabled) {
+    constructor(canvas, maxBulletsAtATime, bulletColor, bulletContext, gameSettings) {
         this.canvas = canvas
         this.maxBulletsAtATime = maxBulletsAtATime
         this.bulletColor = bulletColor
-        this.soundEnabled = soundEnabled
+        this.bulletContext = bulletContext
+        this.gameSettings = gameSettings
 
         this.shootSound = new Audio("sounds/shoot.wav")
         this.shootSound.volume = 0.1
@@ -42,10 +43,13 @@ export default class BulletController {
         ) {
             const bullet = new Bullet(this.canvas, x, y, velocity, this.bulletColor);
             this.bullets.push(bullet);
-            if (this.soundEnabled) {
+            if (this.bulletContext == "player" && this.gameSettings.soundButtionStateManager.checked) {
                 this.shootSound.currentTime = 0;
                 this.shootSound.play();
+            } else if (this.bulletContext == "enemy" && this.gameSettings.soundButtionStateManager.checked) {
+                // code to play enemy shoot sound shall be added in future if demanded
             }
+
             this.timeTillNextBulletAllowed = timeTillNextBulletAllowed;
         }
     }

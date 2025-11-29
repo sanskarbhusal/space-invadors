@@ -22,7 +22,6 @@ h1 {
 
 }
 
-
 body {
     height: 100dvh;
     margin: 0;
@@ -38,7 +37,6 @@ body {
 #canvas-container {
     position: relative;
 }
-
 
 #my-canvas {
     position: relative;
@@ -116,6 +114,6 @@ body {
     box-shadow: 0 10px 20px gray;
 }
 
-#sound-button-state:checked~#sound-button {
+#sound-button-state-manager:checked~#sound-button {
     background-image: url("../images/sound-icon.svg");
 }

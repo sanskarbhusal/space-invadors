@@ -5,6 +5,11 @@ import BulletController from "./controllers/BulletController.js"
 const canvas = document.getElementById("my-canvas")
 const ctx = canvas.getContext("2d")
 
+const gameSettings = {
+    enemyBulletSoundEnabled: false,
+    soundButtionStateManager: document.getElementById("sound-button-state-manager")
+}
+
 const playButton = document.getElementById("play")
 playButton.onclick = () => {
     isFirstLoad = false
@@ -18,14 +23,16 @@ canvas.height = 700
 const background = new Image()
 background.src = "images/space.png"
 
-let playerBulletController = new BulletController(canvas, 10, "red", true)
-let enemyBulletController = new BulletController(canvas, 4, "white", false)
+console.log(gameSettings.soundButtionStateManager.checked)
+let playerBulletController = new BulletController(canvas, 10, "red", "player", gameSettings)
+let enemyBulletController = new BulletController(canvas, 4, "white", "enemy", gameSettings)
 let playerController = new PlayerController(canvas, 3, playerBulletController)
 let enemyController = new EnemyController(
     canvas,
     enemyBulletController,
     playerBulletController,
-    playerController
+    playerController,
+    gameSettings
 )
 
 let isGameOver = false
@@ -52,7 +59,7 @@ function displayGameOver() {
     if (isGameOver) {
 
         if (!didWin) {
-            if (!didGameOverSoundPlay) {
+            if (!didGameOverSoundPlay && gameSettings.soundButtionStateManager.checked) {
                 new Audio("sounds/game-over-sound.wav").play()
                 didGameOverSoundPlay = true
             }
@@ -91,8 +98,8 @@ function displayPlayAgain() {
             didWin = false
 
             // reset the controllers by creating new instances
-            playerBulletController = new BulletController(canvas, 10, "red", true)
-            enemyBulletController = new BulletController(canvas, 4, "white", false)
+            playerBulletController = new BulletController(canvas, 10, "red", gameSettings)
+            enemyBulletController = new BulletController(canvas, 4, "white", gameSettings)
             playerController = new PlayerController(canvas, 3, playerBulletController)
             enemyController = new EnemyController(
                 canvas,

@@ -25,14 +25,13 @@ export default class EnemyController {
     fireBulletTimerDefault = 100
     fireBulletTimer = this.fireBulletTimerDefault
 
-    constructor(canvas, enemyBulletController, playerBulletController, playerController) {
+    constructor(canvas, enemyBulletController, playerBulletController, playerController, gameSettings) {
         this.canvas = canvas
         this.enemyBulletController = enemyBulletController
         this.playerBulletController = playerBulletController
 
-        // Contributed by Sanskar
         this.playerController = playerController
-        // upto here
+        this.gameSettings = gameSettings
 
         this.enemyDeathSound = new Audio("sounds/enemy-death.wav")
         this.enemyDeathSound.volume = 0.1
@@ -53,12 +52,12 @@ export default class EnemyController {
             enemyRow.forEach((enemy, enemyIndex) => {
                 if (this.playerBulletController.collideWith(enemy)) {
                     this.enemyDeathSound.currentTime = 0
-                    this.enemyDeathSound.play()
+                    if (this.gameSettings.soundButtionStateManager.checked) this.enemyDeathSound.play()
+
+
                     enemyRow.splice(enemyIndex, 1)
 
-                    // contibuted by sanskar
                     this.playerController.updateScore(enemy.enemyNumber * 10)
-                    // upto here
                 }
             })
         })
