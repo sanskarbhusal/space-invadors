@@ -5,14 +5,12 @@ import BulletController from "./controllers/BulletController.js"
 const canvas = document.getElementById("my-canvas")
 const ctx = canvas.getContext("2d")
 
-//contributed by: Sanskar Bhusal
 const playButton = document.getElementById("play")
 playButton.onclick = () => {
     isFirstLoad = false
 }
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
-// upto here
 
 canvas.width = 800
 canvas.height = 700
@@ -74,11 +72,9 @@ function displayGameOver() {
         ctx.fillText(scoreText, canvas.width / 4.5, canvas.height / 1.5)
 
         displayPlayAgain()
-        // upto here
     }
 }
 
-// contributed by: Sanskar
 function disablePlayButton() {
     playButton.pointerEvents = "none"
     playButton.style.color = "transparent"
@@ -121,7 +117,6 @@ function disablePlayAgainButton() {
     playAgainButton.style.pointerEvents = "none" // disables hover and click
 }
 
-// upto here
 
 function checkGameOver() {
     if (isGameOver) {
@@ -129,10 +124,8 @@ function checkGameOver() {
     }
 
     if (enemyBulletController.collideWith(playerController)) {
-        // contributed by: Sanskar Bhusal
         playerController.reduceRemainingLife()
         isGameOver = playerController.getRemainingLife() > 0 ? false : true
-        // upto here
     }
 
     if (enemyController.collideWith(playerController)) {
