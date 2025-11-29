@@ -3,6 +3,7 @@
 
 * {
     box-sizing: border-box;
+    user-select: none;
 }
 
 h1 {
@@ -84,4 +85,23 @@ body {
 
 #play:active {
     transform: scale(1);
+}
+
+#sound-button {
+    width: 3.2rem;
+    height: 3.2rem;
+    color: black;
+    background-image: url("../images/no-sound-icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.5rem 2.5rem;
+    border-radius: 50%;
+}
+
+#sound-button:hover {
+    background-color: lightgray;
+}
+
+#sound-button-state:checked~#sound-button {
+    background-image: url("../images/sound-icon.svg");
 }
