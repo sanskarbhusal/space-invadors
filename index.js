@@ -18,6 +18,7 @@ playButton.onclick = () => {
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
 
+const gameStat = document.getElementById("game-stat")
 const score = document.getElementById("score")
 const lives = document.getElementById("lives")
 
@@ -45,6 +46,7 @@ let didGameOverSoundPlay = false
 
 function game() {
     if (!isFirstLoad) {
+        gameStat.style.color = "black"
         disablePlayButton()
         checkGameOver()
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height)
@@ -58,12 +60,14 @@ function game() {
 
         lives.innerText = playerController.getRemainingLife()
         score.innerText = playerController.getScore()
+    } else {
+        gameStat.style.color = "transparent"
     }
 }
 
 function displayGameOver() {
     if (isGameOver) {
-
+        gameStat.style.color = "transparent"
         if (!didWin) {
 
             if (!didGameOverSoundPlay && gameSettings.soundButtionStateManager.checked) {
@@ -74,7 +78,7 @@ function displayGameOver() {
         }
 
         let text = didWin ? "You Won" : "Game Over"
-        let textOffset = didWin ? 5 : 6.2
+        let textOffset = didWin ? 4.5 : 6.2
 
         ctx.fillStyle = "white"
         ctx.font = "70px 'Press Start 2P'"
@@ -84,7 +88,7 @@ function displayGameOver() {
         let scoreText = `Score: ${playerController.getScore()}`
         ctx.fillStyle = "green"
         ctx.font = "50px 'Press Start 2P'"
-        ctx.fillText(scoreText, canvas.width / 4, canvas.height / 1.5)
+        ctx.fillText(scoreText, canvas.width / 4.4, canvas.height / 1.5)
 
         displayPlayAgain()
     }
