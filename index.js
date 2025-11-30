@@ -24,7 +24,6 @@ canvas.height = 700
 const background = new Image()
 background.src = "images/space.png"
 
-console.log(gameSettings.soundButtionStateManager.checked)
 let playerBulletController = new BulletController(canvas, 10, "red", "player", gameSettings)
 let enemyBulletController = new BulletController(canvas, 4, "white", "enemy", gameSettings)
 let playerController = new PlayerController(canvas, 3, playerBulletController)
@@ -60,7 +59,9 @@ function displayGameOver() {
     if (isGameOver) {
 
         if (!didWin) {
+
             if (!didGameOverSoundPlay && gameSettings.soundButtionStateManager.checked) {
+                console.log("khatam tata goodbye")
                 new Audio("sounds/game-over-sound.wav").play()
                 didGameOverSoundPlay = true
             }
@@ -97,7 +98,7 @@ function displayPlayAgain() {
         playAgainButton.onclick = () => {
             isGameOver = false
             didWin = false
-
+            didGameOverSoundPlay = false
             // reset the controllers by creating new instances
             playerBulletController = new BulletController(canvas, 10, "red", "player", gameSettings)
             enemyBulletController = new BulletController(canvas, 4, "white", "enemy", gameSettings)

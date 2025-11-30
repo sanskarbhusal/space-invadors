@@ -19,7 +19,7 @@ export default class EnemyController {
     xVelocity = 0
     yVelocity = 0
     defaultXVelocity = 3
-    defaultYVelocity = 2
+    defaultYVelocity = 3
     moveDownTimerDefault = 30
     moveDownTimer = this.moveDownTimerDefault
     fireBulletTimerDefault = 100
@@ -53,10 +53,7 @@ export default class EnemyController {
                 if (this.playerBulletController.collideWith(enemy)) {
                     this.enemyDeathSound.currentTime = 0
                     if (this.gameSettings.soundButtionStateManager.checked) this.enemyDeathSound.play()
-
-
                     enemyRow.splice(enemyIndex, 1)
-
                     this.playerController.updateScore(enemy.enemyNumber * 10)
                 }
             })
