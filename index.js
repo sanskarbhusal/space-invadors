@@ -18,6 +18,8 @@ playButton.onclick = () => {
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
 
+const score = document.getElementById("score")
+const lives = document.getElementById("lives")
 
 canvas.width = 900
 canvas.height = 710
@@ -53,6 +55,9 @@ function game() {
             playerBulletController.draw(ctx)
             enemyBulletController.draw(ctx)
         }
+
+        lives.innerText = playerController.getRemainingLife()
+        score.innerText = playerController.getScore()
     }
 }
 
