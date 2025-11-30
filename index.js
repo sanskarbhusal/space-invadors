@@ -14,6 +14,7 @@ const playButton = document.getElementById("play")
 playButton.onclick = () => {
     isFirstLoad = false
 }
+
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
 
@@ -98,14 +99,15 @@ function displayPlayAgain() {
             didWin = false
 
             // reset the controllers by creating new instances
-            playerBulletController = new BulletController(canvas, 10, "red", gameSettings)
-            enemyBulletController = new BulletController(canvas, 4, "white", gameSettings)
+            playerBulletController = new BulletController(canvas, 10, "red", "player", gameSettings)
+            enemyBulletController = new BulletController(canvas, 4, "white", "enemy", gameSettings)
             playerController = new PlayerController(canvas, 3, playerBulletController)
             enemyController = new EnemyController(
                 canvas,
                 enemyBulletController,
                 playerBulletController,
-                playerController
+                playerController,
+                gameSettings
             )
             disablePlayAgainButton()
         }
