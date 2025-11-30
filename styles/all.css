@@ -17,11 +17,10 @@ h1 {
     padding-inline: 20px;
     padding-block-start: 10px;
     padding-block-end: 12px;
-
 }
 
 body {
-    height: 100dvh;
+    height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,16 +31,24 @@ body {
 }
 
 #canvas-container {
+    height: 80%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #my-canvas {
+    height: 100%;
     position: relative;
     z-index: 1;
     box-shadow: 5px 5px 20px black;
     border-radius: 20px;
     padding-block-start: 1rem;
     background: url("../images/space.png");
+    display: flex;
+    align-items: center;
 }
 
 #play-again {
@@ -73,8 +80,7 @@ body {
     position: relative;
     width: fit-content;
     z-index: 2;
-    top: 380px;
-    left: 300px;
+    top: 50%;
     color: white;
     font-size: 3rem;
     font-weight: bolder;
