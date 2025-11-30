@@ -13,10 +13,16 @@ const gameSettings = {
 const playButton = document.getElementById("play")
 playButton.onclick = () => {
     isFirstLoad = false
+    //hide instructions
+    instructionContainer.style.color = "transparent"
+    instructionContainer.style.fill = "transparent"
 }
 
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
+
+const instructionContainer = document.getElementById("instruction-container")
+
 
 const gameStat = document.getElementById("game-stat")
 const score = document.getElementById("score")
