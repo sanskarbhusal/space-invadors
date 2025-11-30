@@ -18,8 +18,9 @@ playButton.onclick = () => {
 const playAgainButton = document.getElementById("play-again")
 disablePlayAgainButton(playAgainButton)
 
-canvas.width = 800
-canvas.height = 700
+
+canvas.width = 900
+canvas.height = 710
 
 const background = new Image()
 background.src = "images/space.png"
@@ -68,7 +69,7 @@ function displayGameOver() {
         }
 
         let text = didWin ? "You Won" : "Game Over"
-        let textOffset = didWin ? 5 : 8.5
+        let textOffset = didWin ? 5 : 6.2
 
         ctx.fillStyle = "white"
         ctx.font = "70px 'Press Start 2P'"
@@ -78,7 +79,7 @@ function displayGameOver() {
         let scoreText = `Score: ${playerController.getScore()}`
         ctx.fillStyle = "green"
         ctx.font = "50px 'Press Start 2P'"
-        ctx.fillText(scoreText, canvas.width / 4.5, canvas.height / 1.5)
+        ctx.fillText(scoreText, canvas.width / 4, canvas.height / 1.5)
 
         displayPlayAgain()
     }

@@ -31,24 +31,21 @@ body {
 }
 
 #canvas-container {
-    height: 80%;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
+    background-color: transparent;
 }
 
 #my-canvas {
-    height: 100%;
     position: relative;
     z-index: 1;
     box-shadow: 5px 5px 20px black;
     border-radius: 20px;
-    padding-block-start: 1rem;
     background: url("../images/space.png");
-    display: flex;
-    align-items: center;
 }
 
 #play-again {
