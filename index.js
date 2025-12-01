@@ -116,7 +116,7 @@ function displayPlayAgain() {
             didWin = false
             didGameOverSoundPlay = false
             // reset the controllers by creating new instances
-            playerBulletController = new BulletController(canvas, 10, "red", "player", gameSettings)
+            playerBulletController = new BulletController(canvas, 15, "red", "player", gameSettings)
             enemyBulletController = new BulletController(canvas, 4, "white", "enemy", gameSettings)
             playerController = new PlayerController(canvas, 3, playerBulletController)
             enemyController = new EnemyController(

@@ -68,9 +68,9 @@ export default class PlayerController {
 
     move() {
         if (this.rightPressed) {
-            this.x += this.velocity
+            this.x += this.velocity * 1.5
         } else if (this.leftPressed) {
-            this.x += -this.velocity
+            this.x += -this.velocity * 1.5
         }
     }
 
